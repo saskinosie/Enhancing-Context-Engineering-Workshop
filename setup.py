@@ -1,5 +1,5 @@
 """
-Pre-download script for the ODSC East 2025 Workshop.
+Pre-download script for the ODSC East 2026 Workshop.
 
 Run this at home BEFORE the workshop to download all required data.
 Conference Wi-Fi will not reliably support ~1 GB of downloads.
@@ -149,7 +149,7 @@ def verify():
 
 if __name__ == "__main__":
     print()
-    print("ODSC East 2025 Workshop Setup")
+    print("ODSC East 2026 Workshop Setup")
     print("Enhancing Context Engineering with Agentic Integration")
     print("into Vector Database Queries")
     print()

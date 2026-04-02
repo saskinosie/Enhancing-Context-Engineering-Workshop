@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Qdrant](https://img.shields.io/badge/qdrant-1.17-red.svg)
 
-> **ODSC East 2025 — Hands-On Workshop**
+> **ODSC East 2026 — Hands-On Workshop**
 > Build a production-grade multi-agent RAG system that decomposes complex queries, applies dynamic filtering, and orchestrates intent-based conversations over a vector database.
 
 ## Overview
