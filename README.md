@@ -67,8 +67,8 @@ This workshop builds from the ground up. Starting with vector database fundament
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/saskinosie/Enhancing-Context-Engineering-WS.git
-cd Enhancing-Context-Engineering-WS
+git clone https://github.com/saskinosie/Enhancing-Context-Engineering-Workshop.git
+cd Enhancing-Context-Engineering-Workshop
 ```
 
 **2. Create virtual environment**
