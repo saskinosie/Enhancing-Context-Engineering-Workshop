@@ -44,15 +44,6 @@ This workshop builds from the ground up. Starting with vector database fundament
 - Production failure modes: intent bleed, slot hallucination, low-confidence deadlocks
 - **Key insight**: If you can't measure it, you can't improve it
 
-### [Part 5: All of This, Out of the Box with Contextual AI](notebooks/5-contextual-ai.ipynb)
-**Bonus**: From manual orchestration to managed platform
-- Create a managed datastore — no Docker, no infrastructure
-- Ingest documents with automatic parsing, chunking, and embedding
-- Define agentic workflows in YAML with Agent Composer
-- Query with a single API call — replaces the full orchestration pipeline
-- Built-in groundedness scores, feedback, and metrics
-- **Key insight**: Understand the fundamentals, then decide where to invest engineering effort vs. leverage managed infrastructure
-
 ## Quick Start
 
 ### Prerequisites
@@ -71,34 +62,40 @@ git clone https://github.com/saskinosie/Enhancing-Context-Engineering-Workshop.g
 cd Enhancing-Context-Engineering-Workshop
 ```
 
-**2. Create virtual environment**
+**2. Pull the Qdrant Docker image (~70 MB)**
+```bash
+docker pull qdrant/qdrant:v1.17.1
+```
+
+**3. Create virtual environment and install Python dependencies (~400 MB)**
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-**3. Configure credentials**
+**4. Pre-download the HuggingFace dataset (~250 MB)**
 ```bash
+python -c "from datasets import load_dataset; load_dataset('Qdrant/hm_ecommerce_products', split='train'); print('Dataset downloaded and cached.')"
+```
+
+**5. Configure credentials**
+```bash
+# macOS / Linux
 cp .env.example .env
-# Edit .env with your OpenAI API key
+# Windows (Command Prompt)
+copy .env.example .env
 ```
+Then open `.env` and add your OpenAI API key.
 
-**4. Run the setup script**
-
-This downloads everything you need: the Qdrant Docker image (~70 MB), Python dependencies (~400 MB), and the HuggingFace dataset (~250 MB). It also verifies that everything is configured correctly.
-
-```bash
-python setup.py
-```
-
-**5. Start Qdrant**
+**6. Start Qdrant**
 ```bash
 docker compose up -d
 ```
 
-Qdrant will be available at `http://localhost:6333` (REST API) and `http://localhost:6334` (gRPC). You can also view the dashboard at `http://localhost:6333/dashboard`.
+Qdrant will be available at `http://localhost:6333` (REST API) and `localhost:6334` (gRPC). You can also view the dashboard at `http://localhost:6333/dashboard`.
 
-**6. Verify installation**
+**7. Verify installation**
 
 Open the project folder in VS Code or Cursor, then open `notebooks/1-vector-db-fundamentals.ipynb` and run the first few cells to confirm everything is working.
 
@@ -137,8 +134,7 @@ Response → User
 │   ├── 1-vector-db-fundamentals.ipynb    # Part 1: Vector search basics
 │   ├── 2-query-decomposition.ipynb       # Part 2: Dynamic filtering agents
 │   ├── 3-intent-orchestration.ipynb      # Part 3: Multi-agent orchestration
-│   ├── 4-evaluation.ipynb               # Part 4: Retrieval evaluation
-│   └── 5-contextual-ai.ipynb           # Part 5: Contextual AI platform demo
+│   └── 4-evaluation.ipynb               # Part 4: Retrieval evaluation
 ├── agents/
 │   ├── intent_classifier.py              # Classifies user intent
 │   ├── orchestrator.py                   # Routes to subagents, manages state
@@ -161,7 +157,8 @@ Response → User
 
 - **[Qdrant](https://qdrant.tech/)** - Open-source vector database (local via Docker)
 - **[Pydantic AI](https://ai.pydantic.dev/)** - Framework for building production-grade AI agents
-- **[OpenAI GPT-4.1-mini](https://platform.openai.com/)** - Language model for embeddings, query optimization, and agent reasoning
+- **[OpenAI text-embedding-3-small](https://platform.openai.com/)** - Embedding model for vector generation (1536 dimensions)
+- **[OpenAI GPT-4.1-mini](https://platform.openai.com/)** - Language model for query optimization and agent reasoning
 - **[HuggingFace Datasets](https://huggingface.co/datasets/Qdrant/hm_ecommerce_products)** - H&M e-commerce product catalog
 
 ## Key Takeaways
