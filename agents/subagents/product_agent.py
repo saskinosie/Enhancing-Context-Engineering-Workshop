@@ -40,14 +40,14 @@ def _embed_text(text: str) -> list[float]:
 async def handle_product_query(qdrant, collection_name: str, slots: dict[str, str]) -> str:
     filter_conditions = []
 
-    if slots.get("contract_type"):
+    if slots.get("product_type"):
         filter_conditions.append(
-            FieldCondition(key="product_type_name", match=MatchValue(value=slots["contract_type"]))
+            FieldCondition(key="product_type_name", match=MatchValue(value=slots["product_type"]))
         )
 
-    if slots.get("author"):
+    if slots.get("department"):
         filter_conditions.append(
-            FieldCondition(key="department_name", match=MatchValue(value=slots["author"]))
+            FieldCondition(key="department_name", match=MatchValue(value=slots["department"]))
         )
 
     query_filter = Filter(must=filter_conditions) if filter_conditions else None

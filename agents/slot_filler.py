@@ -5,31 +5,30 @@ from pydantic_ai import Agent
 # Each intent has a set of required and optional slots
 SLOT_DEFINITIONS = {
     "billing": {
-        "required": ["author"],
-        "optional": ["date_range", "contract_type", "amount_keyword"],
+        "required": ["price_keyword"],
+        "optional": ["department", "product_type"],
         "descriptions": {
-            "author": "The person or entity whose contracts to search",
-            "date_range": "A time period to filter by (e.g. 'after 2023', 'last year')",
-            "contract_type": "The type of contract (e.g. 'employment', 'service agreement')",
-            "amount_keyword": "Keywords related to amounts (e.g. 'salary', 'fee', 'payment')",
+            "price_keyword": "Keywords related to price or budget (e.g. 'affordable', 'under $50', 'luxury', 'sale')",
+            "department": "The department or gender category (e.g. 'Menswear', 'Ladieswear', 'Sport')",
+            "product_type": "The type of product (e.g. 'Dress', 'Jacket', 'Trousers')",
         },
     },
     "product": {
-        "required": ["contract_type"],
-        "optional": ["author", "feature_keyword"],
+        "required": ["product_type"],
+        "optional": ["department", "feature_keyword"],
         "descriptions": {
-            "contract_type": "The type of contract to search for (e.g. 'partnership', 'service agreement')",
-            "author": "The person or entity who authored the contract",
-            "feature_keyword": "Specific features or terms to look for",
+            "product_type": "The type of product to search for (e.g. 'Dress', 'Jacket', 'T-shirt', 'Trousers')",
+            "department": "The department or gender category (e.g. 'Menswear', 'Ladieswear', 'Sport')",
+            "feature_keyword": "Specific style, color, or feature to look for (e.g. 'floral', 'waterproof', 'formal')",
         },
     },
     "support": {
         "required": ["issue_keyword"],
-        "optional": ["author", "contract_type"],
+        "optional": ["department", "product_type"],
         "descriptions": {
-            "issue_keyword": "The specific issue or clause (e.g. 'termination', 'dispute', 'confidentiality')",
-            "author": "The person or entity whose contracts to search",
-            "contract_type": "The type of contract to search",
+            "issue_keyword": "What the user needs help finding (e.g. 'warm winter coat', 'formal event outfit', 'waterproof hiking jacket')",
+            "department": "The department or gender category (e.g. 'Menswear', 'Ladieswear', 'Sport')",
+            "product_type": "The type of product (e.g. 'Jacket', 'Dress', 'Shoes')",
         },
     },
 }

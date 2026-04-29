@@ -65,8 +65,10 @@ async def process_turn(
         if intent_result.confidence < CONFIDENCE_THRESHOLD:
             response = (
                 f"I'm not quite sure what you're looking for. "
-                f"I can help with billing questions, product/contract inquiries, "
-                f"or support with contract terms. Could you tell me more about what you need?"
+                f"I can help with pricing and budget questions, "
+                f"browsing products by category or style, "
+                f"or detailed help finding something specific. "
+                f"Could you tell me more about what you need?"
             )
             session.add_turn("assistant", response)
             return response

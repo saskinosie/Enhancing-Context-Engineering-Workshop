@@ -16,13 +16,16 @@ intent_classifier = Agent(
     instructions=f"""
     You classify user utterances into one of these intents: {SUPPORTED_INTENTS}
 
-    Intent definitions:
-    - billing: Questions about payment terms, invoices, fees, salary, compensation,
-      pricing, or financial obligations in contracts.
-    - product: Questions about what products or services are described in contracts,
-      contract types available, features, or specifications.
-    - support: Questions about contract terms, termination clauses, dispute resolution,
-      legal obligations, or help understanding contract language.
+    This is a fashion retail assistant. Intent definitions:
+    - billing: Questions about pricing, budget, affordability, discounts, or value.
+      e.g. "What's the cheapest option?", "Do you have anything on sale?", "I have a $50 budget"
+    - product: Questions about browsing, discovering, or comparing products by category,
+      style, color, or department.
+      e.g. "What jackets do you have for men?", "Show me dresses", "I'm looking for something to wear"
+    - support: Questions asking for detailed help finding something specific, sizing/fit
+      guidance, material details, or product specifications.
+      e.g. "Help me find a waterproof jacket for hiking", "I need something for a formal event",
+      "What's the warmest coat you have?"
     - unknown: The query does not clearly fit any of the above intents.
 
     Return the most likely intent, a confidence score between 0 and 1,
